@@ -21,16 +21,13 @@ The `get_cpt` package (Bouziotas, 2020) is used for colormaps and can be found h
 Only new datasets created as part of this study are included here.
 
 **Simulation Output:**
-NetCDF outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are archived on Zenodo at \
+NetCDF outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are archived on Zenodo at https://doi.org/10.5281/zenodo.20090668 \
 `NETCDF_FILES.md` describes the files available on Zenodo \
 **N.B.** Additional model outputs can be made available upon request.
 
 `Data/Models/`:
 
 - `GP_pr_ssp_anoms.xslx` -> Spreadsheet of monthly average Great Plains precipitation anomalies from SSP projection simulations.
-
-NetCDF outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are archived on Zenodo at \
-**N.B.** Additional model outputs can be made available upon request.
 
 `Data/Proxies/`:
 
