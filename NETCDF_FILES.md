@@ -11,8 +11,8 @@ This file describes netCDF files available in this repository. Each file contain
 
 `Data/Models/Monthly_Means`:
 
-- `MH_monthly_means_197001-204912.nc` -> Monthly mean outputs from mid-Holocene simulation representing an average over 80 model years
-- `PI_monthly_means_187001-194912.nc` -> Monthly mean outputs from pre-Industrial simulation representing an average over 80 model years
+- `MH_monthly_means_197001-204912.nc` -> Monthly mean outputs from the mid-Holocene simulation representing an average over 80 model years
+- `PI_monthly_means_187001-194912.nc` -> Monthly mean outputs from the pre-Industrial simulation representing an average over 80 model years
 - `PMIP4_Ensemble.nc` -> PMIP4 Ensemble average monthly mean surface air temperature (tas) and precipitation (pr) for mid-Holocene and pre-Indsutrial simulations
 
 `Data/Models/Timeseries`:
@@ -22,5 +22,5 @@ The following complete timeseries are provided for both mid-Holocene (MH) and pr
 - `pr` -> Total precipitaiton [kg m-2 s-1]
 - `q_plev` -> Specific humidity on atmospheric pressure levels [kg kg-1]
 - `u_wind` -> U (eastward) component of wind speed on atmopsheric pressure levels [m s-1]
-- `unfrozen_smc` -> Unfrozen soil moisture as a fraction of saturation on soil levels [\1]
+- `unfrozen_smc` -> Unfrozen soil moisture as a fraction of saturation on soil levels
 - `v_wind` -> V (northward) component of wind speed on atmopsheric pressure levels [m s-1]
