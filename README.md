@@ -22,13 +22,9 @@ The `get_cpt` package (Bouziotas, 2020) is used for colormaps and can be found h
 
 `Data/Models/` contains the following:
 
-- `Monthly_Means/` -> Relevant monthly mean outputs from mid-Holocene (MH) and pre-Industrial (PI) simulations.
-- `Timeseries/` -> Complete timeseries outputs from MH and PI simulations for relevant variables.
-
-- `lsm_um13.2.nc` -> Land-Sea Mask.
-- `sat_vsmc_um13.2.nc` -> Volumetric soil moisture concentration at saturation.
 - `GP_pr_ssp_anoms.xslx` -> Spreadsheet of monthly average Great Plains precipitation anomalies from SSP projection simulations.
 
+Outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are archived on Zenodo at \
 **N.B.** Additional model outputs can be made available upon request.
 
 `Data/Proxies/` contains the following:
