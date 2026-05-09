@@ -1,0 +1,6 @@
+# NetCDF (don't track these)
+*.nc
+*.nc4
+.vscode/*
+bin/__pycache__/*
+.DS_Store
