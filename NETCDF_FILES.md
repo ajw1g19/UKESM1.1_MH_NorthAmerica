@@ -2,6 +2,8 @@
 
 This file describes netCDF files available in this repository. Each file contains detailed metadata on the variables contained within
 
+**N.B.** Other simulation outputs are available upon request
+
 `Data/Models`:
 
 - `lsm_um13.2.nc` -> Land-Sea Mask
