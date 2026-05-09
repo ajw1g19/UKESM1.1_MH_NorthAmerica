@@ -4,7 +4,7 @@ This repository contains code and data from "North American forest dieback simul
 
 ## Notebooks
 
-`Notebooks/` contains the code to produce the figures in this study. Each notebook is named for the figures it creates.
+`Notebooks/` contains the code to produce the figures in this study. Each notebook is named for the figures it creates. \
 Also included are notebooks that generate a compilation of climate reconstruction anomalies from the LegacyClimate dataset and calculate RMSE scores between model outputs and proxies.
 
 **N.B.** Some notebooks reference files that are part of publicly available datasets used in this study but not inlcuded in this repository, further details are below.
@@ -13,7 +13,7 @@ Also included are notebooks that generate a compilation of climate reconstructio
 
 Contains python modules with functions used frequently in the code.
 
-The `get_cpt` package (Bouziotas, 2020) is used for colormaps and can be found here: https://doi.org/10.5281/zenodo.3703160.
+The `get_cpt` package (Bouziotas, 2020) is used for colormaps and can be found here: https://doi.org/10.5281/zenodo.3703160. \
 `geometry_fix.py` applies a patch to fix issues with cartopy and shapely 2.x. See https://github.com/SciTools/cartopy/issues/2176 for more details.
 
 ## Data
