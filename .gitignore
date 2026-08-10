@@ -3,4 +3,5 @@
 *.nc4
 .vscode/*
 bin/__pycache__/*
+NPP_Decomposition/__pycache__/*
 .DS_Store

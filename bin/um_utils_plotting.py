@@ -13,12 +13,13 @@ from shapely.ops import split, unary_union
 from shapely.geometry.polygon import orient
 import xarray as xr
 
-def plotBaseMap(ax,lims=None,
+def plotBaseMap(ax, lims=None,
                 coastres="110m", coastlw=0.3, coastcol="grey",
                 borders=True, borderlw=0.15, bordercol="grey",
-                land=False, landcol="lightgrey", landalph=1,
+                land=False, landcol="lightgrey", landalph=1.0,
                 ocean=False, oceancol="white",
                 lakes=False, lakelw=0.3, lakecol="lightblue",
+                states=False, statelw=0.1, statelinecol="grey", statescale="50m", statecol="none",
                 spinelw=1, spinecol="black"):
     """
     Plots a basemap on a given geo axes with coastlines and country borders.
@@ -52,7 +53,10 @@ def plotBaseMap(ax,lims=None,
         ax.add_feature(cfeature.OCEAN, facecolor=oceancol, zorder=1)
 
     if lakes:
-        ax.add_feature(cfeature.LAKES, edgecolor="black", facecolor=lakecol, linewidth=lakelw, zorder=1)
+        ax.add_feature(cfeature.LAKES, edgecolor="black", facecolor=lakecol, linewidth=lakelw, zorder=2)
+
+    if states:
+        ax.add_feature(cfeature.NaturalEarthFeature(category="cultural", name="admin_1_states_provinces_lines", scale=statescale, facecolor=statecol, edgecolor=statelinecol), linewidth=statelw, zorder=1)
 
     try:  
         ax.set_extent(lims, crs=ccrs.PlateCarree())         
@@ -61,9 +65,9 @@ def plotBaseMap(ax,lims=None,
 
 
 
-def plotGrid(ax, xlabeledlines, ylabeledlines,
-             xlines=None, ylines=None, labelsize=8, lw=0.4, 
-             ls=(0, (5, 10)), col="k", alph=0.8, top_lbl=False, right_lbl=False):
+def plotGrid(ax, xlabeledlines, ylabeledlines, xlines=None, ylines=None, 
+             labelsize=8, lw=0.4, ls=(0,(5,10)), col="k", alph=0.8, 
+             top_lbl=False, right_lbl=False):
     """
     Adds labelled and non-labelled gridlines to a geo axes.
     Allows customization of gridline locations, label size, line width, style, color, alpha, and label placement.
@@ -83,10 +87,9 @@ def plotGrid(ax, xlabeledlines, ylabeledlines,
     Returns:
         None
     """    
-    # Labelled gridlines
-    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, lw=lw, color=col, alpha=alph, linestyle=ls)
-    gl.top_labels = top_lbl
-    gl.right_labels = right_lbl
+    # Labels only - always vector
+    gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, lw=0, alpha=0.0)
+    gl.top_labels, gl.right_labels = top_lbl, right_lbl
     gl.xlabel_style = {"size": labelsize}
     gl.ylabel_style = {"size": labelsize}
     gl.xlocator = mticker.FixedLocator(xlabeledlines)
@@ -94,14 +97,13 @@ def plotGrid(ax, xlabeledlines, ylabeledlines,
     gl.xformatter = LONGITUDE_FORMATTER
     gl.yformatter = LATITUDE_FORMATTER
 
-    # Non-Labelled gridlines
-    if xlines is not None and ylines is not None:
-        try:
-            gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=False, lw=lw, color=col, alpha=alph, linestyle=ls)
-            gl.xlocator = mticker.FixedLocator(xlines)
-            gl.ylocator = mticker.FixedLocator(ylines)
-        except Exception:
-            pass
+    # Lines only - rasterizable without touching any text
+    glines = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=False,
+                          lw=lw, color=col, alpha=alph, linestyle=ls)
+    glines.xlocator = mticker.FixedLocator(list(xlabeledlines) + list(xlines or []))
+    glines.ylocator = mticker.FixedLocator(list(ylabeledlines) + list(ylines or []))
+
+    return [gl, glines]
 
 
 

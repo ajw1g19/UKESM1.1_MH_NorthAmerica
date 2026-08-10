@@ -4,17 +4,17 @@ This repository contains code and data from Wilson et al., North American forest
 
 ## Notebooks
 
-`Notebooks/` contains the code to produce the figures in this study. Each notebook is named for the figures it creates. \
-Also included are notebooks that generate a compilation of climate reconstruction anomalies from the LegacyClimate dataset and calculate RMSE scores between model outputs and proxies.
+`Notebooks/` contains code to produce the figures in this study. \
+Also included are code to generate the compilation of climate reconstruction anomalies from the LegacyClimate dataset and calculate RMSE scores between model outputs and proxies.
 
-**N.B.** Some notebooks reference files that are part of publicly available datasets used in this study but not inlcuded in this repository
+**N.B.** Some notebooks reference files that are part of publicly available datasets not inlcuded in this repository
 
 ## bin
 
 Contains python modules with frequently used functions.
 
 The `get_cpt` package (Bouziotas, 2020) is used for colormaps and can be found here: https://doi.org/10.5281/zenodo.3703160. \
-`geometry_fix.py` applies a patch to fix issues with cartopy and shapely 2.x. See https://github.com/SciTools/cartopy/issues/2176 for more details.
+`geometry_fix.py` applies a patch to fix issues with cartopy and shapely when plotting maps with the Robinson projection. See https://github.com/SciTools/cartopy/issues/2176 for more details.
 
 ## Data
 
@@ -22,12 +22,13 @@ Only new datasets created as part of this study are included here.
 
 **Simulation Output:**
 NetCDF outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are archived on Zenodo at https://doi.org/10.5281/zenodo.20090668 \
-`NETCDF_FILES.md` describes the files available on Zenodo \
+`NETCDF_FILES.md` describes the files available in that repository \
 **N.B.** Additional model outputs can be made available upon request.
 
 `Data/Models/`:
 
 - `GP_pr_ssp_anoms.xslx` -> Spreadsheet of monthly average Great Plains precipitation anomalies from SSP projection simulations.
+- `NPP_decomposition.csv` -> NPP decomposition for PFTs averaged over the Great Plains
 
 `Data/Proxies/`:
 

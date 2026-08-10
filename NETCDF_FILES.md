@@ -1,6 +1,6 @@
 # UKESM1.1_MH_NorthAmerica
 
-This file describes netCDF files available in this repository. Each file contains detailed metadata on the variables contained within
+This file describes netCDF files available on Zenodo. Each file contains detailed metadata on the variables contained within
 
 **N.B.** Other simulation outputs are available upon request
 
@@ -8,11 +8,12 @@ This file describes netCDF files available in this repository. Each file contain
 
 - `lsm_um13.2.nc` -> Land-Sea Mask
 - `sat_vsmc_um13.2.nc` -> Volumetric soil moisture content at saturation [m3 m-3]
+- `NPP_decomposition.nc` -> Fields from NPP Decomposition: Log-change contributions of moisture, CO2 fertilisation and combined climate + vegetation structure effects
 
 `Data/Models/Monthly_Means`:
 
-- `MH_monthly_means_197001-204912.nc` -> Monthly mean outputs from the mid-Holocene simulation representing an average over 80 model years
-- `PI_monthly_means_187001-194912.nc` -> Monthly mean outputs from the pre-Industrial simulation representing an average over 80 model years
+- `MH_monthly_means.nc` -> Monthly mean outputs from the mid-Holocene simulation representing an average over 80 model years
+- `PI_monthly_means.nc` -> Monthly mean outputs from the pre-Industrial simulation representing an average over 80 model years
 - `PMIP4_Ensemble.nc` -> PMIP4 Ensemble average monthly mean surface air temperature (tas) and precipitation (pr) for mid-Holocene and pre-Indsutrial simulations
 
 `Data/Models/Timeseries`:
