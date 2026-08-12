@@ -14,14 +14,17 @@ This file describes netCDF files available on Zenodo. Each file contains detaile
 
 - `MH_monthly_means.nc` -> Monthly mean outputs from the mid-Holocene simulation representing an average over 80 model years
 - `PI_monthly_means.nc` -> Monthly mean outputs from the pre-Industrial simulation representing an average over 80 model years
+- `MH_mhveg_monthly_means.nc` -> Monthly mean outputs from the fixed-vegetation simulation MH_mhveg representing an average over 30 model years
+- `MH_piveg_monthly_means.nc` -> Monthly mean outputs from the fixed-vegetation simulation MH_piveg representing an average over 30 model years
 - `PMIP4_Ensemble.nc` -> PMIP4 Ensemble average monthly mean surface air temperature (tas) and precipitation (pr) for mid-Holocene and pre-Indsutrial simulations
 
 `Data/Models/Timeseries`:
 
-The following complete timeseries are provided for both mid-Holocene (MH) and pre-Industrial simulations:
+The following complete timeseries are provided for MH and PI simulations:
 
 - `pr` -> Total precipitaiton [kg m-2 s-1]
 - `q_plev` -> Specific humidity on atmospheric pressure levels [kg kg-1]
 - `u_wind` -> U (eastward) component of wind speed on atmopsheric pressure levels [m s-1]
 - `unfrozen_smc` -> Unfrozen soil moisture as a fraction of saturation on soil levels
 - `v_wind` -> V (northward) component of wind speed on atmopsheric pressure levels [m s-1]
+- `tas` -> Surface Air Temperature (1.5 m) [°C] for MH only (used in vegetation feedback analysis)

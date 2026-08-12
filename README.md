@@ -27,7 +27,6 @@ NetCDF outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are arc
 
 `Data/Models/`:
 
-- `GP_pr_ssp_anoms.xslx` -> Spreadsheet of monthly average Great Plains precipitation anomalies from SSP projection simulations.
 - `NPP_decomposition.csv` -> NPP decomposition for PFTs averaged over the Great Plains
 
 `Data/Proxies/`:
@@ -35,7 +34,6 @@ NetCDF outputs from UKESM1.1 mid-Holocene and pre-Industrial simulations are arc
 - `LC_climate_reconstruction_anomalies.xlsx` -> Our compilation of climate reconstruction anomalies from the LegacyClimate dataset.
 - `pr_rmse_vals.xlsx` -> RMSE scores for model vs proxy precipitation anomalies.
 - `tas_rmse_vals.xslx` -> RMSE scores for model vs proxy surface air temperature anomalies.
-- `veg_rmse_vals.xslx` -> RMSE scores for model vs proxy vegetation surface fraction anomalies.
 
 Publicly available files referenced in the code but not found in this repository include:
 
