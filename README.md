@@ -1,6 +1,6 @@
 # UKESM1.1_MH_NorthAmerica
 
-This repository contains code and data from Wilson et al., North American forest dieback simulated in response to warm and dry mid-Holocene summers.
+This repository contains code and data from Wilson et al., North American forest dieback simulated in response to mid-Holocene spring and summer drying.
 
 ## Notebooks
 
