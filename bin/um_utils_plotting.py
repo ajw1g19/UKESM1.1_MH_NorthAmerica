@@ -66,8 +66,8 @@ def plotBaseMap(ax, lims=None,
 
 
 def plotGrid(ax, xlabeledlines, ylabeledlines, xlines=None, ylines=None, 
-             labelsize=8, lw=0.4, ls=(0,(5,10)), col="k", alph=0.8, 
-             top_lbl=False, right_lbl=False):
+             labelsize=8, lw=0.4, ls=(0,(5,10)), col="k", alph=0.8, xpad=5, ypad=5,
+             bottom_lbl=True, left_lbl=True, top_lbl=False, right_lbl=False):
     """
     Adds labelled and non-labelled gridlines to a geo axes.
     Allows customization of gridline locations, label size, line width, style, color, alpha, and label placement.
@@ -82,16 +82,20 @@ def plotGrid(ax, xlabeledlines, ylabeledlines, xlines=None, ylines=None,
         ls: gridline linestyle
         col: gridline color
         alph: gridline alpha
+        bottom_lbl: show bottom labels
         top_lbl: show top labels
+        left_lbl: show left labels
         right_lbl: show right labels
     Returns:
         None
     """    
     # Labels only - always vector
     gl = ax.gridlines(crs=ccrs.PlateCarree(), draw_labels=True, lw=0, alpha=0.0)
+    gl.bottom_labels, gl.left_labels = bottom_lbl, left_lbl
     gl.top_labels, gl.right_labels = top_lbl, right_lbl
     gl.xlabel_style = {"size": labelsize}
     gl.ylabel_style = {"size": labelsize}
+    gl.xpadding, gl.ypadding = xpad, ypad
     gl.xlocator = mticker.FixedLocator(xlabeledlines)
     gl.ylocator = mticker.FixedLocator(ylabeledlines)
     gl.xformatter = LONGITUDE_FORMATTER
