@@ -1,12 +1,13 @@
 """
 JULES-faithful saturation specific humidity (qsat).
 
-Direct port of qsat_mod.F90::qsat_1D (JULES vn7.2), the routine sf_stom
-calls at sf_stom_jls_mod.F90:661. Uses the Goff-Gratch saturation vapour
-pressure lookup table `es` from qsat_data_mod.F90 (over water above 0 C,
-over ICE below 0 C), the Gill A4.7 air-enhancement factor fsubw, and the
-A4.3 specific-humidity conversion.
+Direct port of qsat_mod.F90::qsat_1D (JULES vn7.2), the routine that 
+sf_stom calls at sf_stom_jls_mod.F90:661. Uses the Goff-Gratch saturation 
+vapour pressure lookup table `es` from qsat_data_mod.F90 (over water above 
+0 C, over ICE below 0 C), the Gill A4.7 air-enhancement factor fsubw, and 
+the A4.3 specific-humidity conversion.
 """
+
 import numpy as np
 import xarray as xr
 
@@ -255,10 +256,8 @@ def _qsat_np(t, p):
 
 def qsat(t, p):
     """Saturation specific humidity (kg/kg), qsat_mod.F90::qsat.
-
-    t : temperature (K), p : pressure (Pa). Accepts scalars, numpy arrays,
-    or xr.DataArray; xarray inputs are broadcast/aligned and a DataArray is
-    returned (coords/dims preserved)."""
+    t : temperature (K), p : pressure (Pa). Wrapper for xarray or
+    numpy inputs"""
     if isinstance(t, xr.DataArray) or isinstance(p, xr.DataArray):
         return xr.apply_ufunc(_qsat_np, t, p, dask='parallelized',
                               output_dtypes=[float])

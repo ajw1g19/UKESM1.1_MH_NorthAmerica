@@ -79,8 +79,10 @@ def leaf_gross_field(ppm, ft, tstar, pstar, q1, ipar):
     (dq >= dqcrit) or dark (ipar <= 0)."""
     ca = ppm * 1e-6 * pstar                                     # Pa
     ccp, K, power = temperature_terms(tstar, pstar)
+    
+    # C4: no photorespiration
     if C3[ft] == 0:
-        ccp = ccp * 0.0                                         # C4: no photorespiration
+        ccp = ccp * 0.0                                        
 
     nleaf = NMASS[ft] * LMA[ft] * 1000.0                        # gN/m2 leaf
     tc = tstar - ZERODEGC
@@ -110,7 +112,7 @@ def leaf_gross_field(ppm, ft, tstar, pstar, q1, ipar):
 # ----------------------------------------------------------------------------
 
 def frac_on_climate(ft, co2, ref_ppm, f_R, tstar, pstar, q1, ipar):
-    """Fractional NPP change from the ref -> co2 CO2 change on a FIXED climate.
+    """Fractional NPP change from the ref_ppm -> co2 change in CO2 on a FIXED climate.
     R_c = f_R * Ag(ref) is CO2-independent (recomputed here at this climate)."""
     ag_ref = leaf_gross_field(ref_ppm, ft, tstar, pstar, q1, ipar)
     rc     = f_R * ag_ref

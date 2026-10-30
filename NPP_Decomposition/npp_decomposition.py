@@ -1,7 +1,6 @@
 # ============================================================================
-#  npp_decomposition_mh_climstruct.py  —  MH vs PI change in
-#  POTENTIAL NPP, split in log space into three terms that sum exactly to
-#  ln(pot_M/pot_P):
+#  npp_decomposition.py  —  MH vs PI change in POTENTIAL NPP, split in log 
+#  space into three terms that sum exactly to ln(pot_M/pot_P):
 #
 #      moisture   = ln(beta_M / beta_P)
 #      co2        = ln(1 + fco2)
@@ -12,12 +11,12 @@
 #
 #  CO2 uses the mechanistic framework from co2_fertilisation_fields.py: 
 #  the JULES Collatz/Jacobs leaf rate is evaluated at PI and MH CO2
-#  on BOTH climates, and the two log-ratios averaged (geometric mean of 1+frac)
-#  so the climate x CO2 interaction is split symmetrically.
+#  on BOTH climates, and the two log-ratios averaged (geometric mean of 
+#  1+frac) so the climate x CO2 interaction is split symmetrically.
 #
-#  The three terms decompose POTENTIAL NPP. Nitrogen limitation is recovered at
-#  region level as the gap between the aggregate changes in npp_nlimit_pft and
-#  pot_npp_pft — pure model output, independent of any component.
+#  The three terms decompose POTENTIAL NPP. Nitrogen limitation is recovered 
+#  at region level as the gap between the aggregate changes in npp_nlimit_pft 
+#  and pot_npp_pft — pure model output, independent of any component.
 #
 #  OUTPUT: NPP_decomposition.nc   fields on (time, PFTs, lat, lon)
 #          NPP_decomposition.csv  Contributions averaged over the Great Plains
@@ -64,13 +63,15 @@ P = um.importUMData(MEANS_DIR / FILES["P"])
 # ----------------------------------------------------------------------------
 
 def climate(ds):
-    """Gridbox climate driving the leaf biochemistry. ts is archived in Celsius."""
+    """The gridbox climate that drives the leaf biochemistry. 
+    ts is archived in Celsius."""
     return dict(tstar=ds["ts"] + ZERODEGC, pstar=ds["surfpress"],
                 q1=ds["q"], ipar=0.45 * ds["down_ssw"])
 
 def co2_fertilisation():
-    """Per-PFT fractional NPP change from the PI -> MH CO2 drop, as the geometric
-    mean of the effect evaluated on the PI climate and on the MH climate."""
+    """Per-PFT fractional change in NPP from the PI -> MH drop in CO2, 
+    calcaulted as the geometric mean of the effect evaluated separately on the 
+    PI climate and on the MH climate."""
     clim_pi, clim_mh = climate(P), climate(M)
 
     cue = (P["pot_npp_pft"] / P["gpp_pft"]).where(P["gpp_pft"] > 0.0)
@@ -130,8 +131,8 @@ AREA    = np.cos(np.deg2rad(M.latitude))
 gp_mask = umplt.umRegionMask("GP", M.longitude, M.latitude)
 
 def log_mean(a, b):
-    """L(a,b) = (b-a)/(ln b - ln a); -> a as b -> a. The unique cell weight for
-    which flux-weighted log-changes sum to the change in the regional total."""
+    """The unique cell weight for which flux-weighted log-changes sum to 
+    the change in the regional total."""
     a = a.where(a > 0.0); b = b.where(b > 0.0)
     dln = np.log(b) - np.log(a)
     return xr.where(dln == 0.0, a, (b - a) / xr.where(dln == 0.0, 1.0, dln))
